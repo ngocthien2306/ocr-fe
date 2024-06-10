@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl --ssl-cert localhost.crt --ssl-key localhost.key --host 0.0.0.0 --open --disable-host-check",
     "start_2": "ng serve --ssl --ssl-cert localhost.crt --ssl-key localhost.key --host 0.0.0.0 --open --disable-host-check",
     "build": "ng build --configuration production",
     "test": "ng test",
