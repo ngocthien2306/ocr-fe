@@ -36,16 +36,16 @@ jobs:
               run: |
                   cd /usr/app/ocr-fe
                   git fetch --all
-                  git checkout main
+                  git checkout develop
                   git stash --include-untracked
                   git reset --hard
                   git clean -fd
-                  git pull origin main
+                  git pull origin develop
 
             - name: prepare app image
               run: |
                   cd /usr/app/ocr-fe
-                  git checkout main
+                  git checkout develop
                   docker build -t ocr-fe:staging .
 
             - name: push image to registry
