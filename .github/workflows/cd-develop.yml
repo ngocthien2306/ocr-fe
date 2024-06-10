@@ -22,7 +22,7 @@ jobs:
               with:
                   node-version: "18.x"
 
-            - run: npm install
+            - run: npm install --f
             - run: CI= npm run build
 
     release:
