@@ -1,0 +1,66 @@
+name: build-test-deploy
+on:
+    pull_request:
+        types: [closed]
+        branches:
+            - main
+    # push:
+    #     branches:
+    #         - main
+
+jobs:
+    build:
+        if: github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v3
+
+            - name: use node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "18.x"
+
+            - run: npm install
+            - run: CI= npm run build
+
+    release:
+        needs: build
+        runs-on: [self-hosted, cicd]
+
+        steps:
+            - uses: TooMuch4U/actions-clean@v2.1
+
+            - name: pull latest source
+              run: |
+                  cd /usr/app/ocr-fe
+                  git fetch --all
+                  git checkout main
+                  git stash --include-untracked
+                  git reset --hard
+                  git clean -fd
+                  git pull origin main
+
+            - name: prepare app image
+              run: |
+                  cd /usr/app/ocr-fe
+                  git checkout main
+                  docker build -t ocr-fe:staging .
+
+            - name: push image to registry
+              run: |
+                  docker rmi registry.i-soft.com.vn/ocr-fe:staging
+                  docker tag ocr-fe:staging registry.i-soft.com.vn/ocr-fe:staging
+                  docker push registry.i-soft.com.vn/ocr-fe:staging
+    deploy:
+        needs: release
+        runs-on: [self-hosted, cicd]
+        steps:
+          - uses: TooMuch4U/actions-clean@v2.1
+          - name: start application in production
+            run: |
+              docker service update ocr-fe-swarm-dev_ocr-fe --image registry.i-soft.com.vn/ocr-fe:staging
+              echo 'Deploy app DONE'
+            # - run: |
+            #       cd /var/lib/docker/volumes/portainer_portainer_data/_data/compose/67/
