@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  max-height: 100vh;
+  overflow: hidden;
+}
+canvas {
+  /* position: absolute;
+  inset: 0; */
+  display: none;
+}
+button {
+  border: 0;
+  outline: none;
+  background: #00000070;
+  color: #FFFFFF;
+  padding: 4px 8px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+  -webkit-transition: 0.3s ease-in;
+  -moz-transition: 0.3s ease-in;
+  -ms-transition: 0.3s ease-in;
+  -o-transition: 0.3s ease-in;
+}
+
+/* Camera Container */
+.camera-ctn {
+  position: relative;
+  background: #000000;
+}
+.camera-view video {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+/* CAMERA BOTTOM */
+.camera-bottom {
+  height: 250px;
+  background: #00000050;
+  position: absolute;
+  inset: 0;
+  top: auto;
+  padding: 0 5%;
+  display: grid;
+  place-items: center;
+}
+.camera-bottom > .inner {
+  display: grid;
+  place-items: center;
+  max-width: 500px;
+}
+
+/* LENS MODIFIER */
+.lens-modifier {
+  display: flex;
+  position: absolute;
+  top: -50px;
+  background: #00000070;
+  color: #FFFFFF;
+  border-radius: 24px;
+  height: 30px;
+  padding: 0 4px;
+}
+.lens-modifier button {
+  background: transparent;
+  font-weight: 700;
+}
+.lens-modifier button.active, .lens-modifier button:active {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+/* MODES */
+.modes {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  margin-bottom: 2rem;
+}
+.modes button {
+  font-size: 1.15rem;
+  font-weight: 300;
+  background: transparent;
+}
+.modes button.active {
+  background: #00000070;
+  color: #FFFFFF;
+  height: 40px;
+  padding: 0 1rem;
+  font-weight: 700;
+}
+
+/* SHUTTER CONTAINER */
+.shutter-ctn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.previous-shots {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+}
+.shutter {
+  height: 80px;
+  width: 80px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+.shutter:active {
+  transform: scale(0.8);
+}
+.switch-device {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+}
+
+/* GALLERY VIEW */
+.gallery-view {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background: #000000;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  transform: translateX(100vw);
+}
+.gallery-view.show-gallery {
+  transform: translateX(0);
+}
+.gallery-view img {
+  height: 100vh;
+  object-fit: contain;
+}
+.gallery-view button {
+  position: absolute;
+  top: 45%;
+  left: 5%;
+  font-size: 1.2rem;
+}
+.gallery-view button#next {
+  right: 5%;
+  left: auto;
+}
+.gallery-view button#close-gallery {
+  left: 5%;
+  top: 5%;
+}

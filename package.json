@@ -1,0 +1,73 @@
+{
+  "name": "ngx-webcam",
+  "version": "0.4.1",
+  "author": "basst314",
+  "contributors": [
+    "davidshen84"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basst314/ngx-webcam.git"
+  },
+  "keywords": [
+    "Webcam",
+    "Camera",
+    "Angular",
+    "Angular 13",
+    "Smartphone",
+    "Phone",
+    "Tablet"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "start_2": "ng serve --ssl --ssl-cert localhost.crt --ssl-key localhost.key --host 0.0.0.0 --open --disable-host-check",
+    "build": "ng build --configuration production",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "packagr": "ng-packagr -p ng-package.json",
+    "docs": "npm run build -- --base-href /ngx-webcam/ --output-path docs"
+  },
+  "private": false,
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^13.0.1",
+    "@angular/animations": "^13.0.0",
+    "@angular/cli": "~13.0.1",
+    "@angular/common": "^13.0.0",
+    "@angular/compiler": "^13.0.0",
+    "@angular/compiler-cli": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@angular/forms": "^13.0.0",
+    "@angular/language-service": "^13.0.0",
+    "@angular/platform-browser": "^13.0.0",
+    "@angular/platform-browser-dynamic": "^13.0.0",
+    "@angular/router": "^13.0.0",
+    "@types/jasmine": "~3.6.0",
+    "@types/jasminewd2": "~2.0.8",
+    "@types/node": "^14.0.23",
+    "browserslist": "^4.16.5",
+    "codelyzer": "^6.0.0",
+    "core-js": "^3.6.5",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~6.3.7",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^13.0.2",
+    "protractor": "~7.0.0",
+    "rxjs": "^6.6.0",
+    "ts-node": "~8.10.2",
+    "tslib": "^2.3.1",
+    "tslint": "~6.1.0",
+    "typescript": "4.4.4",
+    "zone.js": "~0.11.4"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "ngx-bootstrap": "^12.0.0"
+  }
+}

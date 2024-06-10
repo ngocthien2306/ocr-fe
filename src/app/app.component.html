@@ -1,0 +1,131 @@
+<div class="container text-center mt-1">
+  <h1 class="display-4 mb-2">OCR Application</h1>
+
+  <div class="webcam-container mb-1">
+    <webcam 
+      [height]="640" 
+      [width]="480" 
+      [trigger]="triggerObservable" 
+      (imageCapture)="handleImage($event)" 
+      *ngIf="showWebcam"
+      [allowCameraSwitch]="allowCameraSwitch" 
+      [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions"
+      [imageQuality]="1"
+      (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"
+    ></webcam>
+  </div>
+
+  <div class="button-group mb-1">
+    <button *ngIf="sendRequestClick" class="btn btn-primary mr-2" type="button" disabled>
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Sending API
+    </button>
+
+    <button *ngIf="!sendRequestClick" class="btn btn-primary mr-2" (click)="triggerSnapshot()">Take A Snapshot</button>
+    <!-- <button class="btn btn-danger mx-3" (click)="toggleWebcam()">Toggle Webcam</button> -->
+    <button class="btn btn-secondary mx-3" (click)="showNextWebcam(true)" [disabled]="!multipleWebcamsAvailable">Switch Webcam</button>
+  </div>
+
+
+
+    <!-- <div class="form-group mb-5">
+      <label class="mr-3">Preferred facing mode:</label>
+      <div class="form-check form-check-inline mx-3">
+        <input class="form-check-input" type="radio" value="user" name="facingMode" [(ngModel)]="facingMode" id="userMode">
+        <label class="form-check-label" for="userMode">User</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" value="environment" name="facingMode" [(ngModel)]="facingMode" id="environmentMode">
+        <label class="form-check-label" for="environmentMode">Environment</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" value="" name="facingMode" [(ngModel)]="facingMode" id="noPreferenceMode">
+        <label class="form-check-label" for="noPreferenceMode">No preference</label>
+      </div>
+    </div> -->
+
+  <div>
+    <div class="container mt-2 mb-1">
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item" *ngFor="let step of steps; let i = index">
+              <a class="nav-link" [ngClass]="{'active': currentStep === i, 'disabled': !isStepValid(i)}" (click)="goToStep(i)">
+                Step {{ i + 1 }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div *ngIf="currentStep === 0">
+            <h5 class="card-title">OCR Results</h5>
+            <h6 *ngIf="ocr_yn" class="text-danger">Can not detect OCR, please try again!</h6>
+            <h6 *ngIf="!call_success_yn" class="text-danger">Can not request to OCR server, please try again!</h6>
+            <form #step1Form="ngForm">
+              <div class="mb-3 row align-items-center mt-3">
+                <div class="col-3 text-end">
+                  <label for="ocrValue1" class="form-label">RPM:</label>
+                </div>
+                <div class="col-7">
+                  <input type="text" class="form-control" id="ocrValue1" [(ngModel)]="formData.rpm" name="rpm" required>
+                </div>
+              </div>
+            
+              <div class="mb-3 row align-items-center">
+                <div class="col-3 text-end">
+                  <label for="ocrValue2" class="form-label">OilT:</label>
+                </div>
+                <div class="col-7">
+                  <input type="text" class="form-control" id="ocrValue2" [(ngModel)]="formData.oilt" name="oilt" required>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="currentStep === 1">
+            <h5 class="card-title">Step 2</h5>
+            <form #step2Form="ngForm">
+              <div class="mb-3">
+                <label for="email" class="form-label">OCR Value</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="formData.email" name="email" required>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="currentStep === 2">
+            <h5 class="card-title">Step 3</h5>
+            <form #step3Form="ngForm">
+              <div class="mb-3">
+                <label for="password" class="form-label">OCR Value</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="formData.password" name="password" required>
+              </div>
+            </form>
+          </div>
+          <div class="mt-3">
+            <button class="btn btn-secondary" (click)="previousStep()" [disabled]="currentStep === 0">Previous</button>
+            <button class="btn btn-primary mx-3" (click)="nextStep()" [disabled]="!isCurrentStepValid()">Next</button>
+            <button class="btn btn-success" (click)="submitForm()" *ngIf="currentStep === steps.length - 1 && isCurrentStepValid()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- <div class="snapshot" *ngIf="webcamImage">
+    <h2 class="mb-3">Image capture</h2>
+    <img [src]="webcamImage.imageAsDataUrl" alt="webcam image" class="img-fluid rounded">
+  </div> -->
+
+  <div class="snapshot" *ngIf="showImageYN">
+    <h2 class="mb-3">Image Result</h2>
+    <img [src]="base64" alt="webcam image" class="img-fluid rounded">
+  </div>
+
+
+  <h4 class="mt-5" *ngIf="messages.length > 0">Messages:</h4>
+  <ul class="list-group" *ngIf="messages.length > 0">
+    <li class="list-group-item" *ngFor="let msg of messages">{{msg | json}}</li>
+  </ul>
+</div>

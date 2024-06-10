@@ -1,0 +1,29 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+- "17"
+
+addons:
+  chrome: stable
+  apt:
+    packages:
+      - dpkg # to fix issue described here: https://github.com/travis-ci/travis-ci/issues/9361
+
+cache:
+  directories:
+  - ./node_modules
+
+install:
+  - npm install
+
+before_script:
+  - LATEST_CHROMEDRIVER_VERSION=`curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE`
+  - curl https://chromedriver.storage.googleapis.com/${LATEST_CHROMEDRIVER_VERSION}/chromedriver_linux64.zip -O
+  - unzip chromedriver_linux64.zip -d ~/bin
+
+script:
+- npm run packagr
+- ng test --watch=false --progress=false --browsers=ChromeHeadlessCI
+- ng e2e --protractor-config=./protractor-ci.conf.js

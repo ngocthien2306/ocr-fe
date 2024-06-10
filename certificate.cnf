@@ -1,0 +1,25 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+x509_extensions = v3_req
+distinguished_name = dn
+
+[dn]
+C = VN
+ST = Vietnamese
+L = Vietnamese
+O = ISoft
+OU = ISoft Unit
+emailAddress = email@domain.com
+CN = aiteam.ocr.vn
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+DNS.2 = aiteam.ocr.vn
+IP.1 = 192.168.1.230
+IP.2 = 192.168.1.70
+IP.3 = 10.8.0.10
