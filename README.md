@@ -11,8 +11,8 @@ Flash-fallback. <a href="https://basst314.github.io/ngx-webcam/?" target="_blank
 
 ## Demo
 
-Try out the <a href="https://basst314.github.io/ngx-webcam/?" target="_blank">Live-Demo</a> or see
-the <a href="https://github.com/basst314/ngx-webcam-demo" target="_blank">Demo-Project</a>.
+Try out the <a href="https://app-ocr-fe.i-soft.com.vn/" target="_blank">Live-Demo</a> or see
+the <a href="https://app-ocr-fe.i-soft.com.vn/" target="_blank">Demo-Project</a>.
 
 ## Features
 
