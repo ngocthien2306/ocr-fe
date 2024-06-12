@@ -79,6 +79,20 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
 
   public ngAfterViewInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
+
+    debugger;
+    const x = this.width / 5;
+    const y = this.height / 5;
+    const rectWidth = this.width * (3 / 5);
+    const rectHeight = this.height * (3 / 5);
+
+    this.rect.x = x;
+    this.rect.y = y;
+    this.rect.width = rectWidth;
+    this.rect.height = rectHeight;
+
+
+
     this.detectAvailableDevices()
       .then(() => {
         // start video
@@ -92,10 +106,11 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
 
     this.video.nativeElement.addEventListener('loadedmetadata', () => {
       this.setCanvasDimensions();
-      this.drawRectangleOnCanvas();
+      // this.drawRectangleOnCanvas();
+      this.draw();
 
     });
-    this.draw();
+
   }
 
   public ngOnDestroy(): void {
@@ -214,9 +229,11 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
   }
 
   private draw() {
+    this.ctx.strokeStyle = 'red';
+    this.ctx.lineWidth = 3;
+  
     this.ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     this.ctx.beginPath();
-    console.log(this.rect.x, this.rect.y, this.rect.width, this.rect.height)
     this.ctx.rect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
     this.ctx.stroke();
     this.drawResizeHandles();
