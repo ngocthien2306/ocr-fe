@@ -1,20 +1,23 @@
 <div class="container text-center mt-1">
   <h1 class="display-4 mb-2">OCR Application</h1>
-
-  <div class="webcam-container mb-1">
-    <webcam 
-      [height]="640" 
-      [width]="480" 
-      [trigger]="triggerObservable" 
-      (imageCapture)="handleImage($event)" 
-      *ngIf="showWebcam"
-      [allowCameraSwitch]="allowCameraSwitch" 
-      [switchCamera]="nextWebcamObservable"
-      [videoOptions]="videoOptions"
-      [imageQuality]="1"
-      (cameraSwitched)="cameraWasSwitched($event)"
-      (initError)="handleInitError($event)"
-    ></webcam>
+  
+  <div>
+    <div class="webcam-container mb-1">
+      <webcam 
+        [height]="450" 
+        [width]="338" 
+        [trigger]="triggerObservable" 
+        (imageCapture)="handleImage($event)" 
+        *ngIf="showWebcam"
+        [allowCameraSwitch]="allowCameraSwitch" 
+        [switchCamera]="nextWebcamObservable"
+        [videoOptions]="videoOptions"
+        [imageQuality]="1"
+        (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)"
+      ></webcam>
+    </div>
+  
   </div>
 
   <div class="button-group mb-1">

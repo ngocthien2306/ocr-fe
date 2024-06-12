@@ -8,7 +8,7 @@ import { MockModel, OCRResult } from '../model/dto.model';
 })
 export class ApiService {
 
-  private apiUrl = 'https://192.168.1.104:8080'; // Replace with your backend API URL
+  private apiUrl = 'https://192.168.1.98:8080'; // Replace with your backend API URL
 
   constructor(private http: HttpClient) { }
 

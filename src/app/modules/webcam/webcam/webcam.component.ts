@@ -16,9 +16,9 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
   private static DEFAULT_IMAGE_QUALITY: number = 1;
 
   /** Defines the max width of the webcam area in px */
-  @Input() public width: number = 480;
+  @Input() public width: number = 338;
   /** Defines the max height of the webcam area in px */
-  @Input() public height: number = 640;
+  @Input() public height: number = 450;
   /** Defines base constraints to apply when requesting video track from UserMedia */
   @Input() public videoOptions: MediaTrackConstraints = WebcamComponent.DEFAULT_VIDEO_OPTIONS;
   /** Flag to enable/disable camera switch. If enabled, a switch icon will be displayed if multiple cameras were found */
@@ -216,6 +216,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
   private draw() {
     this.ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     this.ctx.beginPath();
+    console.log(this.rect.x, this.rect.y, this.rect.width, this.rect.height)
     this.ctx.rect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
     this.ctx.stroke();
     this.drawResizeHandles();
@@ -245,8 +246,8 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
     const video = this.video.nativeElement;
     const canvas = this.canvas.nativeElement;
 
-    canvas.width = 480;
-    canvas.height = 640;
+    canvas.width = 338;
+    canvas.height = 450;
   }
 
   drawRectangleOnCanvas() {
@@ -423,13 +424,15 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
       imageData = context2d.getImageData(0, 0, _canvas.width, _canvas.height);
     }
 
-    const rectWidth = 240;
-    const rectHeight = 320;
-    const maxWidth = 480;
-    const maxHeight = 640;
 
-    const x1 = (_canvas.width - rectWidth) / 2;
-    const y1 = (_canvas.height - rectHeight) / 2;
+
+    const rectWidth = this.rect.width;
+    const rectHeight = this.rect.height;
+    const maxWidth = 338;
+    const maxHeight = 450;
+
+    const x1 = (this.rect.x);
+    const y1 = (this.rect.y);
 
 
     const x2 = x1 + rectWidth;
@@ -440,7 +443,6 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
     const normalizedX2 = x2 / maxWidth;
     const normalizedY2 = y2 / maxHeight;
 
-    debugger;
     this.imageCapture.next(new WebcamImage(dataUrl, mimeType, imageData, [normalizedX1, normalizedY1], [normalizedX2, normalizedY2]));
   }
 
