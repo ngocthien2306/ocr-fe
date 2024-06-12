@@ -1,14 +1,14 @@
 {
-  "name": "ngx-webcam",
+  "name": "ocr-fe",
   "version": "0.4.1",
-  "author": "basst314",
+  "author": "thien.ds",
   "contributors": [
-    "davidshen84"
+    "ngocthien2306"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/basst314/ngx-webcam.git"
+    "url": "https://github.com/ngocthien2306/ocr-fe.git"
   },
   "keywords": [
     "Webcam",
@@ -22,7 +22,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl --ssl-cert localhost.crt --ssl-key localhost.key --host 0.0.0.0 --open --disable-host-check",
-    "start_2": "ng serve --ssl --ssl-cert localhost.crt --ssl-key localhost.key --host 0.0.0.0 --open --disable-host-check",
+    "serve-https": "serve -s dist -l 4200 --ssl-cert localhost.crt --ssl-key localhost.key",
     "build": "ng build --configuration production",
     "test": "ng test",
     "lint": "ng lint",
