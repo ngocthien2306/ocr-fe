@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://api-ocr-dev.i-soft.com.vn'
 };
