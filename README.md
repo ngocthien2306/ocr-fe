@@ -1,3 +1,8 @@
+![WF5UbgQZao2VpZxVNIUlnOk1gyc](https://github.com/user-attachments/assets/68401ac1-414b-4292-9b7f-8003900c4fcb)
+
+![WKu7bDxNBoJv8PxBUyLlvYLXgRh](https://github.com/user-attachments/assets/92255a4e-3d8b-4ba5-a77a-b9294ba6a5e3)
+
+
 # ngx-webcam [![npm version](https://badge.fury.io/js/ngx-webcam.svg)](https://badge.fury.io/js/ngx-webcam) [![Build Status](https://api.travis-ci.com/basst314/ngx-webcam.svg?branch=master)](https://app.travis-ci.com/github/basst314/ngx-webcam)
 
 A simple Angular webcam component. Pure &amp; minimal, no
