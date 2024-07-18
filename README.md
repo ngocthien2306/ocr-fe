@@ -1,4 +1,5 @@
-![WF5UbgQZao2VpZxVNIUlnOk1gyc](https://github.com/user-attachments/assets/68401ac1-414b-4292-9b7f-8003900c4fcb)
+
+<img src="https://github.com/user-attachments/assets/68401ac1-414b-4292-9b7f-8003900c4fcb" alt="Resized Image" width="300"/>
 
 ![WKu7bDxNBoJv8PxBUyLlvYLXgRh](https://github.com/user-attachments/assets/92255a4e-3d8b-4ba5-a77a-b9294ba6a5e3)
 
